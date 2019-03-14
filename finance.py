@@ -47,9 +47,9 @@ def pv_ci():
 
    pv_ci = fv/(pow(1+r,n))
    print("Your compound intrest present value was: ")
-   print(fv_ci)
+   print(pv_ci)
 
-   return fv_ci   
+   return pv_ci   
 
 
 
