@@ -8,12 +8,6 @@ def fv_si():
    print(fv_si)
    return fv_si
 
-
-
-#hello
-
-
-
 def pv_si():
 
    fv = float(input("Future value? "))
