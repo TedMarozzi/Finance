@@ -17,7 +17,7 @@ def pv_si():
    pv_si = fv/(1+n*r)
 
 
-   print("Your present value is: ")
+   print("Your present value was: ")
    print(pv_si)
 
    return pv_si
@@ -38,17 +38,30 @@ def fv_ci():
 
 
 
+def pv_ci():
+
+   fv = float(input("Future value? "))
+   r = float(input("Rate per period? "))
+   n = float(input("Time periods? "))
+
+
+   pv_ci = fv/(pow(1+r,n))
+   print("Your compound intrest present value was: ")
+   print(fv_ci)
+
+   return fv_ci   
+
+
+
 def fv_oa():
 
-   #inputting d
-   # ata
+   #inputting data
    c = float(input("Cash flows? "))
    r = float(input("Rate per period? "))
    n = float(input("Time periods? "))
 
 
-   #formula for
-   #  fv_oa
+   #formula for fv_oa
    fv_oa = (c/r)*(pow((1+r),n) - 1)
 
 
