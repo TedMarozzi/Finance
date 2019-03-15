@@ -1,3 +1,5 @@
+#python -c 'import finance; finance.pv_ci()'
+
 def fv_si():
    pv = float(input("Present value? "))
    r = float(input("Rate per period? "))
