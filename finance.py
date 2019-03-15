@@ -85,7 +85,6 @@ def pv_oa():
    return pv_oa
 
 
-   
 #Future value of an ordinary annuity
 def fv_oa():
 
@@ -100,4 +99,16 @@ def fv_oa():
    print("Your ordinary annuity's future value is: ")
    print(fv_oa)
 
-   return fv_oa
+   return 
+   
+def pv_ad():
+   c = float(input("Cash flows? "))
+   r = float(input("Rate per period? "))
+   n = float(input("Time periods? "))
+
+   pv_ad = c/r * (1-1/pow(1+r,n))(1+r)
+
+   print("Your annuity due's present value is: ")
+   print(pv_ad)
+   
+   return pv_ad
