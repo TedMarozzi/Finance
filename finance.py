@@ -128,7 +128,7 @@ def fv_ad():
 def pv_gp():
    c = float(input("Cash flows? "))
    r = float(input("Rate per period? "))
-   g = float(input("Growth rate of cash flows "))
+   g = float(input("Growth rate of cash flows? "))
 
    pv_gp = c/(r-g)
 
@@ -140,10 +140,10 @@ def pv_gp():
 def pv_goa():
    c = float(input("Cash flows? "))
    r = float(input("Rate per period? "))
-   g = float(input("Growth rate of cash flows "))
+   g = float(input("Growth rate of cash flows? "))
    n = float(input("Time periods? "))
 
-   pv_goa = (c/(r-g))*(1-pow((1+g)/(1+r)),n)
+   pv_goa = (c/(r-g))*(1-pow((1+g)/(1+r),n))
 
    print("Your growing ordinanry annuity's present value is: ")
    print(pv_goa)
@@ -153,10 +153,10 @@ def pv_goa():
 def fv_goa():
    c = float(input("Cash flows? "))
    r = float(input("Rate per period? "))
-   g = float(input("Growth rate of cash flows "))
+   g = float(input("Growth rate of cash flows? "))
    n = float(input("Time periods? "))
 
-   fv_goa = (c/(r-g))*(1-pow((1+g)/(1+r)),n)*pow(1+r,n)
+   fv_goa = (c/(r-g))*(1-pow((1+g)/(1+r),n))*pow(1+r,n)
 
    print("Your growing ordinanry annuity's future value is: ")
    print(fv_goa)
