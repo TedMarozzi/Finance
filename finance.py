@@ -52,7 +52,7 @@ def pv_ci():
    return pv_ci
 
 def pv_p():
-   c = float(input("Cash flows?"))
+   c = float(input("Cash flows? "))
    r = float(input("Rate per period? "))
 
    pv_p = c/r
@@ -61,6 +61,31 @@ def pv_p():
    print(pv_p)
    return pv_p
 
+def pv_dp():
+   c = float(input("Cash flows? "))
+   r = float(input("Rate per period? "))    
+   n = float(input("Time periods? "))
+
+   pv_dp = (c/r)*(1/pow(1+r,n))
+
+   print("Your deffered perpituity's present value is: ")
+   print(pv_dp)
+   return pv_dp
+
+def pv_oa():
+   c = float(input("Cash flows? "))
+   r = float(input("Rate per period? "))
+   n = float(input("Time periods? "))
+
+   pv_oa = c/r * (1-1/pow(1+r,n))
+
+   print("Your ordinary annuity's present value is: ")
+   print(pv_oa)
+
+   return pv_oa
+
+
+   
 #Future value of an ordinary annuity
 def fv_oa():
 
