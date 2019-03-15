@@ -1,5 +1,6 @@
 #python -c 'import finance; finance.pv_ci()'
 
+#Future value simple intrest
 def fv_si():
    pv = float(input("Present value? "))
    r = float(input("Rate per period? "))
@@ -10,6 +11,7 @@ def fv_si():
    print(fv_si)
    return fv_si
 
+#Present value simple intrest
 def pv_si():
 
    fv = float(input("Future value? "))
@@ -18,19 +20,17 @@ def pv_si():
 
    pv_si = fv/(1+n*r)
 
-
    print("Your present value was: ")
    print(pv_si)
 
    return pv_si
 
-
+#Future value compound intrest
 def fv_ci():
 
    pv = float(input("Present value? "))
    r = float(input("Rate per period? "))
    n = float(input("Time periods? "))
-
 
    fv_ci = pv*(pow(1+r,n))
    print("Your compound intrest future value is: ")
@@ -38,23 +38,30 @@ def fv_ci():
 
    return fv_ci
 
-
-
+#Present value compound intrest
 def pv_ci():
 
    fv = float(input("Future value? "))
    r = float(input("Rate per period? "))
    n = float(input("Time periods? "))
 
-
    pv_ci = fv/(pow(1+r,n))
    print("Your compound intrest present value was: ")
    print(pv_ci)
 
-   return pv_ci   
+   return pv_ci
 
+def pv_p():
+   c = float(input("Cash flows?"))
+   r = float(input("Rate per period? "))
 
+   pv_p = c/r
 
+   print("Your perpituity's present value is: ")
+   print(pv_p)
+   return pv_p
+
+#Future value of an ordinary annuity
 def fv_oa():
 
    #inputting data
@@ -62,16 +69,10 @@ def fv_oa():
    r = float(input("Rate per period? "))
    n = float(input("Time periods? "))
 
-
    #formula for fv_oa
    fv_oa = (c/r)*(pow((1+r),n) - 1)
-
 
    print("Your ordinary annuity's future value is: ")
    print(fv_oa)
 
    return fv_oa
-
-
-
-
