@@ -1,164 +1,122 @@
-#python -c 'import finance; finance.pv_ci()'
+import sympy as sp
+
+sp.init_printing()
+x,eq_to_solve,output = sp.symbols('x,eq_to_solve,output')
+ls = sp.Function('ls')
+rs = sp.Function('rs')
 
 #Future value simple intrest
-def fv_si():
-   pv = float(input("Present value? "))
-   r = float(input("Rate per period? "))
-   n = float(input("Time periods? "))
+def fv_si(pv, r, n):
+
    fv_si = pv*(1+n*r)
 
-   print("Your future value is: ")
-   print(fv_si)
    return fv_si
 
 #Present value simple intrest
-def pv_si():
-
-   fv = float(input("Future value? "))
-   r = float(input("Rate per period? "))
-   n = float(input("Time periods? "))
+def pv_si(fv, r, n):
 
    pv_si = fv/(1+n*r)
-
-   print("Your present value was: ")
-   print(pv_si)
 
    return pv_si
 
 #Future value compound intrest
-def fv_ci():
-
-   pv = float(input("Present value? "))
-   r = float(input("Rate per period? "))
-   n = float(input("Time periods? "))
+def fv_ci(pv, r, n):
 
    fv_ci = pv*(pow(1+r,n))
-   print("Your compound intrest future value is: ")
-   print(fv_ci)
 
    return fv_ci
 
 #Present value compound intrest
-def pv_ci():
-
-   fv = float(input("Future value? "))
-   r = float(input("Rate per period? "))
-   n = float(input("Time periods? "))
+def pv_ci(fv, r, n):
 
    pv_ci = fv/(pow(1+r,n))
-   print("Your compound intrest present value was: ")
-   print(pv_ci)
 
    return pv_ci
 
-def pv_p():
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))
+def pv_p(c, r):
 
    pv_p = c/r
 
-   print("Your perpituity's present value is: ")
-   print(pv_p)
    return pv_p
 
-def pv_dp():
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))    
-   n = float(input("Time periods? "))
+def pv_dp(c,r,n):
 
    pv_dp = (c/r)*(1/pow(1+r,n))
 
-   print("Your deffered perpituity's present value is: ")
-   print(pv_dp)
    return pv_dp
 
-def pv_oa():
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))
-   n = float(input("Time periods? "))
+def pv_oa(c,r,n):
 
    pv_oa = c/r * (1-1/pow(1+r,n))
-
-   print("Your ordinary annuity's present value is: ")
-   print(pv_oa)
 
    return pv_oa
 
 
 #Future value of an ordinary annuity
-def fv_oa():
+def fv_oa(c,r,n):
 
-   #inputting data
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))
-   n = float(input("Time periods? "))
-
-   #formula for fv_oa
    fv_oa = (c/r)*(pow((1+r),n) - 1)
 
-   print("Your ordinary annuity's future value is: ")
-   print(fv_oa)
-
-   return 
+   return fv_oa
    
-def pv_ad():
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))
-   n = float(input("Time periods? "))
+def pv_ad(c,r,n):
 
    pv_ad = c/r * (1-1/pow(1+r,n))(1+r)
 
-   print("Your annuity due's present value is: ")
-   print(pv_ad)
-
    return pv_ad
 
-def fv_ad():
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))
-   n = float(input("Time periods? "))
+def fv_ad(c,r,n):
 
    fv_ad = (c/r)*(pow(1+r,n)-1)(1+r)
 
-   print("Your annuity due's future value is: ")
-   print(fv_ad)
-
    return fv_ad
 
-def pv_gp():
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))
-   g = float(input("Growth rate of cash flows? "))
+def pv_gp(c,r,g):
 
    pv_gp = c/(r-g)
 
-   print("Your growing perpituity's present value is: ")
-   print(pv_gp)
-
    return pv_gp
 
-def pv_goa():
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))
-   g = float(input("Growth rate of cash flows? "))
-   n = float(input("Time periods? "))
+def pv_goa(c, r, g, n):
 
    pv_goa = (c/(r-g))*(1-pow((1+g)/(1+r),n))
 
-   print("Your growing ordinanry annuity's present value is: ")
-   print(pv_goa)
-
    return pv_goa
 
-def fv_goa():
-   c = float(input("Cash flows? "))
-   r = float(input("Rate per period? "))
-   g = float(input("Growth rate of cash flows? "))
-   n = float(input("Time periods? "))
+def fv_goa(c, r, g, n):
 
    fv_goa = (c/(r-g))*(1-pow((1+g)/(1+r),n))*pow(1+r,n)
 
-   print("Your growing ordinanry annuity's future value is: ")
-   print(fv_goa)
-
    return fv_goa
+
+def solver(ls, rs):
+   
+   eq_to_solve = sp.Eq(ls, rs)
+   output = sp.solve(eq_to_solve,x)
+   print("x = ", float(output[0]))
+
+def main():
+
+   help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
+
+   if(help_needed == "y"):
+      print("""Functions avaliable:
+         fv_si(pv, r, n)
+         pv_si(fv, r, n)
+         fv_ci(pv, r, n)
+         pv_ci(fv, r, n)
+         pv_p(c, r)
+         pv_dp(c,r,n)
+         pv_oa(c,r,n)
+         fv_oa(c,r,n)
+         pv_ad(c,r,n)
+         pv_gp(c,r,g)
+         pv_goa(c, r, g, n)
+         fv_goa(c, r, g, n)""")
+
+   ls = eval(input("left side of equation? "))
+   rs = eval(input("right side of equation? "))
+
+   solver(ls,rs)
+
+main()
