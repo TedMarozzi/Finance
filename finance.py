@@ -61,7 +61,7 @@ def fv_oa(c,r,n):
    
 def pv_ad(c,r,n):
 
-   pv_ad = c/r * (1-1/pow(1+r,n))(1+r)
+   pv_ad = c/r * (1-1/pow(1+r,n))*(1+r)
 
    return pv_ad
 
@@ -96,11 +96,9 @@ def solver(ls, rs):
    print("x = ", float(output[0]))
 
 def main():
-   input()
-   input()
-
-   #help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
-   help_needed = "n"
+   
+   help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
+   #help_needed = "n"
    if(help_needed == "y"):
       print("""Functions avaliable:
          fv_si(pv, r, n)
