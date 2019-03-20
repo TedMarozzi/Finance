@@ -1,4 +1,5 @@
 import sympy as sp
+import math
 
 sp.init_printing()
 x,eq_to_solve,output = sp.symbols('x,eq_to_solve,output')
@@ -12,12 +13,14 @@ def fv_si(pv, r, n):
 
    return fv_si
 
+
 #Present value simple intrest
 def pv_si(fv, r, n):
 
    pv_si = fv/(1+n*r)
 
    return pv_si
+   
 
 #Future value compound intrest
 def fv_ci(pv, r, n):
@@ -89,34 +92,59 @@ def fv_goa(c, r, g, n):
 
    return fv_goa
 
+#used when the cash flows dom't match the compounding
+def re_y(r,m):
+
+   #m is periods per year
+   #r is rate per year
+   re_y = pow(1+r/m, m)-1
+
+   return re_y
+
+#Effective intrest continous compounding
+#used when the cash flows dom't match the compounding
+def re_c(r):
+
+   re = pow(math.e, r) - 1
+
+   return re
+
+#effecitive n year rate
+def re_n(r,m,n):
+
+   re_y = pow(1+r/m, m)-1
+   re_n_y = pow(1 + re_y, n)-1 
+
+   return re_n_y
+
 def solver(ls, rs):
    
    eq_to_solve = sp.Eq(ls, rs)
    output = sp.solve(eq_to_solve,x)
    print("x = ", float(output[0]))
 
-def main():
-   
-   help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
-   #help_needed = "n"
-   if(help_needed == "y"):
-      print("""Functions avaliable:
-         fv_si(pv, r, n)
-         pv_si(fv, r, n)
-         fv_ci(pv, r, n)
-         pv_ci(fv, r, n)
-         pv_p(c, r)
-         pv_dp(c,r,n)
-         pv_oa(c,r,n)
-         fv_oa(c,r,n)
-         pv_ad(c,r,n)
-         pv_gp(c,r,g)
-         pv_goa(c, r, g, n)
-         fv_goa(c, r, g, n)""")
+help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
 
-   ls = eval(input("left side of equation? "))
-   rs = eval(input("right side of equation? "))
+if(help_needed == "y"):
+   print("""
+      Functions avaliable:
+      fv_si(pv, r, n)
+      pv_si(fv, r, n)
+      pv_ci(fv, r, n)
+      pv_p(c, r)
+      pv_dp(c,r,n)
+      pv_oa(c,r,n)
+      fv_oa(c,r,n)
+      pv_ad(c,r,n)
+      pv_gp(c,r,g)
+      pv_goa(c, r, g, n)
+      fv_goa(c, r, g, n)
+      re(r,m)
+      re_c(r)
+      """)
 
-   solver(ls,rs)
+ls = eval(input("left side of equation? "))
+rs = eval(input("right side of equation? "))
 
-main()
+solver(ls,rs)
+

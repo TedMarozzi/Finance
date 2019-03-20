@@ -1,3 +1,7 @@
 {
-    "python.pythonPath": "C:\\Users\\Maroz\\AppData\\Local\\Programs\\Python\\Python37\\python.exe"
+    "python.pythonPath": "C:\\Users\\Maroz\\Anaconda3\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.condaPath": "C:\\Users\\Maroz\\Anaconda3\\pkgs\\conda-4.5.12-py37_0\\Scripts\\conda.exe",
+    "python.formatting.provider": "black"
 }
