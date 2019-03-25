@@ -2,7 +2,7 @@ import sympy as sp
 import math
 
 sp.init_printing()
-x,eq_to_solve,output = sp.symbols('x,eq_to_solve,output')
+x,eq_to_solve,output,fv,pv,c,r,g,n,m = sp.symbols('x,eq_to_solve,output,fv,pv,c,r,g,n,m')
 ls = sp.Function('ls')
 rs = sp.Function('rs')
 
@@ -48,6 +48,7 @@ def pv_dp(c,r,n):
 
    return pv_dp
 
+#works
 def pv_oa(c,r,n):
 
    pv_oa = c/r * (1-1/pow(1+r,n))
@@ -81,6 +82,9 @@ def pv_gp(c,r,g):
    return pv_gp
 
 def pv_goa(c, r, g, n):
+   
+   if(g==x or r == x):
+      print("Sorry if I take a while to solve its really hard")
 
    pv_goa = (c/(r-g))*(1-pow((1+g)/(1+r),n))
 
@@ -88,11 +92,14 @@ def pv_goa(c, r, g, n):
 
 def fv_goa(c, r, g, n):
 
+   if(g==x or r == x):
+      print("Sorry if I take a while to solve this one its really hard for me...")
+
    fv_goa = (c/(r-g))*(1-pow((1+g)/(1+r),n))*pow(1+r,n)
 
    return fv_goa
 
-#used when the cash flows dom't match the compounding
+#used when the cash flows don't match the compounding
 def re_y(r,m):
 
    #m is periods per year
@@ -117,11 +124,17 @@ def re_n(r,m,n):
 
    return re_n_y
 
+#works
 def solver(ls, rs):
    
    eq_to_solve = sp.Eq(ls, rs)
+
    output = sp.solve(eq_to_solve,x)
-   print("x = ", float(output[0]))
+   try:
+      print("x = ", float(output[0]))
+      print("x = ", round(float(output[0]),2))
+   except:
+      print("I don't know how to do this yet :(")
 
 help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
 
