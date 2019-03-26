@@ -132,29 +132,29 @@ def solver(ls, rs):
    output = sp.solve(eq_to_solve,x)
    try:
       print("x = ", float(output[0]))
-      print("x = ", round(float(output[0]),2))
+      print("and to two decimal places x = ", round(float(output[0]),2))
    except:
       print("I don't know how to do this yet :(")
 
-help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
+#help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
 
-if(help_needed == "y"):
-   print("""
-      Functions avaliable:
-      fv_si(pv, r, n)
-      pv_si(fv, r, n)
-      pv_ci(fv, r, n)
-      pv_p(c, r)
-      pv_dp(c,r,n)
-      pv_oa(c,r,n)
-      fv_oa(c,r,n)
-      pv_ad(c,r,n)
-      pv_gp(c,r,g)
-      pv_goa(c, r, g, n)
-      fv_goa(c, r, g, n)
-      re(r,m)
-      re_c(r)
-      """)
+#if(help_needed == "y"):
+#   print("""
+#      Functions avaliable:
+#      fv_si(pv, r, n)
+#      pv_si(fv, r, n)
+#      pv_ci(fv, r, n)
+#      pv_p(c, r)
+#      pv_dp(c,r,n)
+#      pv_oa(c,r,n)
+#      fv_oa(c,r,n)
+#      pv_ad(c,r,n)
+#      pv_gp(c,r,g)
+#      pv_goa(c, r, g, n)
+#      fv_goa(c, r, g, n)
+#      re(r,m)
+#      re_c(r)
+#      """)
 
 ls = eval(input("left side of equation? "))
 rs = eval(input("right side of equation? "))
