@@ -100,29 +100,19 @@ def fv_goa(c, r, g, n):
    return fv_goa
 
 #used when the cash flows don't match the compounding
-def re_y(r,m):
+def rate_per_cash_flows(rate_per_year, compounds_per_year, cash_flows_per_year):
 
-   #m is periods per year
-   #r is rate per year
-   re_y = pow(1+r/m, m)-1
+   rate_per_cash_flows = pow(1+rate_per_year/compounds_per_year, compounds_per_year/cash_flows_per_year)-1
 
-   return re_y
+   return rate_per_cash_flows
 
 #Effective intrest continous compounding
-#used when the cash flows dom't match the compounding
+#used when the cash flows don't match the compounding
 def re_c(r):
 
    re = pow(math.e, r) - 1
 
    return re
-
-#effecitive n year rate
-def re_n(r,m,n):
-
-   re_y = pow(1+r/m, m)-1
-   re_n_y = pow(1 + re_y, n)-1 
-
-   return re_n_y
 
 #works
 def solver(ls, rs):
@@ -130,31 +120,31 @@ def solver(ls, rs):
    eq_to_solve = sp.Eq(ls, rs)
 
    output = sp.solve(eq_to_solve,x)
-   try:
-      print("x = ", float(output[0]))
-      print("and to two decimal places x = ", round(float(output[0]),2))
-   except:
-      print("I don't know how to do this yet :(")
+   #try:
+   print("x = ", float(output[0]))
+   print("and to two decimal places x = ", round(float(output[0]),2))
+   #except:
+   #   print("I don't know how to do this yet :(")
 
-#help_needed = input("Do you need a list of functions available and their arguments, y/n? ")
 
-#if(help_needed == "y"):
-#   print("""
-#      Functions avaliable:
-#      fv_si(pv, r, n)
-#      pv_si(fv, r, n)
-#      pv_ci(fv, r, n)
-#      pv_p(c, r)
-#      pv_dp(c,r,n)
-#      pv_oa(c,r,n)
-#      fv_oa(c,r,n)
-#      pv_ad(c,r,n)
-#      pv_gp(c,r,g)
-#      pv_goa(c, r, g, n)
-#      fv_goa(c, r, g, n)
-#      re(r,m)
-#      re_c(r)
-#      """)
+
+print("""
+   Functions avaliable:
+   fv_si(pv, r, n)
+   pv_si(fv, r, n)
+   pv_ci(fv, r, n)
+   pv_p(c, r)
+   pv_dp(c,r,n)
+   pv_oa(c,r,n)
+   fv_oa(c,r,n)
+   pv_ad(c,r,n)
+   pv_gp(c,r,g)
+   pv_goa(c, r, g, n)
+   fv_goa(c, r, g, n)
+   rate_per_cash_flows(rate_per_year, compounds_per_year, cash_flows_per_year)
+   re_c(r)
+   """)
+
 
 ls = eval(input("left side of equation? "))
 rs = eval(input("right side of equation? "))
