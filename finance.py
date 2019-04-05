@@ -114,6 +114,29 @@ def re_c(r):
 
    return re
 
+def pv_cb(c, fv, rd, n):
+
+   pv_cb = (c/rd)*(1-1/pow(1+rd,n))+fv/pow(1+rd,n)
+
+   return pv_cb
+
+def pv_ds(fv, rd, n):
+   
+   return fv/(1+(n/365)*rd)
+
+def pe_leading(payout_ratio, re, g):
+   return payout_ratio/(re-g)
+
+
+def pe_trailing(payout_ratio, re, g):
+   return (payout_ratio*(1+g))/(re-g)
+
+#pv_pn is the value of dividend before it has grown const
+def pv_pn(dn_plus_one, re, g):
+   return dn_plus_one/(re  - g)
+
+
+
 #works
 def solver(ls, rs):
    
